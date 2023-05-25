@@ -4,6 +4,7 @@ from File import *
 class Desktop:
     def __init__(self,):
         self.root = Folder("root")
+        self.types = {}
     
     def search_node(self, root, node):
         if root is None:
@@ -164,6 +165,22 @@ class Desktop:
         else:
             print("No se encontro la carpeta")
 
+    def is_type(self, root):
+        if root is None:
+            return None
+        else:
+            if isinstance(root, File):
+                if root.extension in self.types.keys():
+                    self.types[root.extension] = self.types.get(root.extension+1)
+                if root.extension not in self.types.keys():
+                    self.types.setdefault(root.extension, 1)
+
+            else:
+                self.is_type(root.l_child)
+                self.is_type(root.l_central_child)
+                self.is_type(root.r_central_child)
+                self.is_type(root.r_child)
+
 
     
 
@@ -187,5 +204,4 @@ class Desktop:
 
             
                 
-
 
