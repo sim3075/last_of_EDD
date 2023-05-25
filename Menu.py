@@ -10,7 +10,7 @@ class Menu:
             print("2. Agregar Archivo")
             print("3. Modificar Carpeta")
             print("4. Modificar Archivo")
-            print("5. Carpeta más grande de derecha a izquierda")
+            print("5. Todos los tipos de archivos")
             print("6. Salir")
 
             opcion = input("Ingrese una opción: ")
@@ -40,7 +40,9 @@ class Menu:
                 self.desktop.modify_file(old_file, new_name, new_extension, new_weight)
 
             elif opcion == "5":
-                pass
+                self.desktop.is_type(self.desktop.root)
+                for i in self.desktop.types:
+                    print(f"{i} = {self.desktop.types[i]}")
             elif opcion == "6":
                 break
             else:
