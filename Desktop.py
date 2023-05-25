@@ -171,9 +171,11 @@ class Desktop:
         else:
             if isinstance(root, File):
                 if root.extension in self.types.keys():
-                    self.types[root.extension] = self.types.get(root.extension+1)
+                    if root not in self.types[root.extension]:
+                        self.types[root.extension].append(root)
+
                 if root.extension not in self.types.keys():
-                    self.types.setdefault(root.extension, 1)
+                    self.types.setdefault(root.extension, [root])
 
             else:
                 self.is_type(root.l_child)
@@ -204,4 +206,3 @@ class Desktop:
 
             
                 
-
