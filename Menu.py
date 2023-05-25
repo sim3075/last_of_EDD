@@ -42,7 +42,7 @@ class Menu:
             elif opcion == "5":
                 self.desktop.is_type(self.desktop.root)
                 for i in self.desktop.types:
-                    print(f"{i} = {self.desktop.types[i]}")
+                    print(f"{i} = {len(self.desktop.types[i])}")
             elif opcion == "6":
                 break
             else:
